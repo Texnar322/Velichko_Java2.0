@@ -3,30 +3,36 @@ package Task2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Arrays;
-import java.util.Scanner;
+//import org.apache.commons.lang.ArrayUtils;
 
 public class Task2 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Scanner scannermas = new  Scanner(System.in);
-        System.out.println("Введите размер одномерного массива: ");
-        int arr = scannermas.nextInt();
-        String[] words  = new String[arr];
-        System.out.println("Введите слова: ");
-        int max = -1;
-        for (int i = 0; i < words.length; i++)
-        {
-            words[i] = reader.readLine();
-            if (words[i].length() > max) max = words[i].length();
+    static int max = 0;
+    public static void main(String[] args) throws IOException
+    {
+        int[] array = new int[20];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (int) Math.round((Math.random() * 20) - 10);
+            System.out.println(array[i]);
         }
-        System.out.println("Самые длинная строки:");
-        for (String string : words)
-        {
-            if (string.length() == max) {
-                System.out.println(string);
+        findMax(array);
+        findMin(array);
+    }
+    public static void findMax(int[] array)
+    {
+        Arrays.sort(array);// узнать как работает
+        max = array[array.length - 1];
+        System.out.println("Максимальный элемент" + max);
+    }
+    public static void findMin(int[] array)
+    {
+        int min = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < array[0]) {
+                min = array[i];
             }
         }
+        System.out.println("Минимальный  элемент" + min);
     }
 }
