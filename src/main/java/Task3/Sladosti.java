@@ -2,20 +2,9 @@ package Task3;
 
 public class Sladosti {
     public static void main(String args[]) {
-        Candy candy = new Candy();
-        candy.setName("Конфеты");
-        candy.setVes(1500);
-        candy.setPrice(700);
-        Chocolate chocolate = new Chocolate();
-        chocolate.setName("Шоколад");
-        chocolate.setVes(2000);
-        chocolate.setPrice(500);
-        chocolate.setProcent("95%");
-        Jellybean jellybean = new Jellybean();
-        jellybean.setName("Мармеладки");
-        jellybean.setVes(3000);
-        jellybean.setPrice(600);
-        jellybean.setColor("Cиний");
+        Candy candy = new Candy("Конфеты", 1500, 700, "Драже");
+        Chocolate chocolate = new Chocolate("Шоколад", 2000, 500, "95%");
+        Jellybean jellybean = new Jellybean("Мармеладки", 3000, 600, "Синий");
         System.out.println("Подарок стоит из: " + candy.getName() + " "+ chocolate.getName() + " "
                 + jellybean.getName());
         System.out.println(candy.getName() +" "+ "Цена "+ candy.getPrice() +" рублей "+ "Вес "+ candy.getVes()+" грамм ");
@@ -26,8 +15,5 @@ public class Sladosti {
         System.out.println("Общая цена: ");
         System.out.println(candy.getPrice() + chocolate.getPrice() + jellybean.getPrice());
         //System.out.println(candy.getPrice() + chocolate.getPrice() + jellybean.getPrice());
-
-
-
     }
 }
