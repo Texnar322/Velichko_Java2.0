@@ -8,31 +8,40 @@ import java.util.Arrays;
 //import org.apache.commons.lang.ArrayUtils;
 
 public class Task2 {
-    static int max = 0;
+    //static int max = 0;
     public static void main(String[] args) throws IOException
     {
-        int[] array = new int[20];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = (int) Math.round((Math.random() * 20) - 10);
-            System.out.println(array[i]);
-        }
-        findMax(array);
-        findMin(array);
-    }
-    public static void findMax(int[] array)
-    {
-        Arrays.sort(array);// узнать как работает
-        max = array[array.length - 1];
-        System.out.println("Максимальный элемент" + max);
-    }
-    public static void findMin(int[] array)
-    {
-        int min = array[0];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < array[0]) {
-                min = array[i];
+        int[] arr = createAndFillRandomArray(20);
+        int max_negative = Integer.MIN_VALUE;
+        int min_positive = Integer.MAX_VALUE;
+        int positive = 0, negative = 0;
+        int temp;
+        for (int i = 0; i < arr.length; i++) {
+            if ((arr[i] < 0) && (max_negative < arr[i])) {
+                max_negative = arr[i];
+                negative = i;
+            }
+            if ((arr[i] >= 0) && (min_positive > arr[i])) {
+                min_positive = arr[i];
+                positive = i;
             }
         }
-        System.out.println("Минимальный  элемент" + min);
+        System.out.println("Минимальный  положительный : " + min_positive);
+        System.out.println("Максимальный отрицательный: " + max_negative);
+        temp = arr[negative];
+        arr[negative] = arr[positive];
+        arr[positive] = temp;
+
+        System.out.println("\nМассив после замены:");
+        System.out.println(Arrays.toString(arr));
+    }
+    public static int[] createAndFillRandomArray(int n) {
+        System.out.println("Массив до замены:");
+        int[] mas = new int[n];
+        for (int i = 0; i < n; i++) {
+            mas[i] = (int) ((Math.random() * 20) - 10);
+        }
+        System.out.println(Arrays.toString(mas));
+        return mas;
     }
 }
